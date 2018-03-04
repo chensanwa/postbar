@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--本文件专用于配置controller-->
+
+    <!--配置IndexController-->
+    <bean id="indexController" class="com.postbar.controller.IndexController">
+        <property name="userAction" ref="userAction"/>
+    </bean>
+
+    <!--配置RegisterController-->
+    <bean id="registerController" class="com.postbar.controller.RegisterController">
+        <property name="userAction" ref="userAction"/>
+    </bean>
+</beans>

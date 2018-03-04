@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--suppress ALL -->
+<hibernate-mapping>
+
+    <class name="com.postbar.entity.User" table="user">
+        <id name="id" type="int">
+            <column name="id"/>
+            <!--assigned：主键由外部程序生成  increment:主键按数值顺序递增-->
+            <generator class="increment"/>
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="gender"/>
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="address"/>
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password"/>
+        </property>
+        <property name="picture" type="java.sql.Blob">
+            <column name="picture"></column>
+        </property>
+    </class>
+</hibernate-mapping>  

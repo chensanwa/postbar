@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.postbar.entity.Post" table="post">
+        <id name="postId" type="int">
+            <column name="postid" not-null="true"/>
+            <!--increment：主键由数值递增-->
+            <generator class="increment"/>
+        </id>
+        <property name="userId" type="int">
+            <column name="userid" not-null="true"/>
+        </property>
+        <property name="title" type="java.lang.String">
+            <column name="title"/>
+        </property>
+        
+        <!--映射List集合的属性-->
+        <!--<list name="picture">-->
+            <!--<key>-->
+                <!--<column name="postId" not-null="true"/>-->
+            <!--</key>-->
+            <!--<list-index>-->
+                <!--<column name="postid"></column>-->
+            <!--</list-index>-->
+            <!--<element type="java.sql.Blob">-->
+                <!--<column name="picture"/>-->
+            <!--</element>-->
+        <!--</list>-->
+        
+        <property name="postTime" type="java.util.Date">
+            <column name="posttime"></column>
+        </property>
+
+        <!--<list name="commentTexts">-->
+            <!--<key>-->
+                <!--<column name="postId" not-null="true"/>-->
+            <!--</key>-->
+            <!--<list-index>-->
+                <!--<column name="postid" not-null="true"/>-->
+            <!--</list-index>-->
+            <!--<element type="int">-->
+                <!--<column name="commentid" not-null="true"/>-->
+            <!--</element>-->
+
+        <!--</list>-->
+
+    </class>
+</hibernate-mapping>  

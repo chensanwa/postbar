@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--sessionFactory创建-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!--因为在hibernate核心配置文件中，没有数据库的配置，数据库配置在spring中配置，注入dataSource-->
+        <!--指定hibernate核心配置文件-->
+        <!--注入dataSource-->
+        <property name="dataSource" ref="comboPooledDataSource"></property>
+
+        <!--指定使用hibernate核心配置文件-->
+        <!--<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>-->
+
+        <!--配置hibernate基本信息-->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.connection.autocommit">true</prop>
+            </props>
+        </property>
+
+        <!--配置映射文件-->
+        <property name="mappingResources">
+            <list>
+                <value>com/postbar/entity/User.hbm.xml</value>
+
+            </list>
+        </property>
+
+
+    </bean>
+
+    <!--创建hibernateTemplate对象-->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <!--注入sessionFactory-->
+        <property name="sessionFactory" ref="sessionFactory"></property>
+
+        <property name="checkWriteOperations" value="false"/>
+    </bean>
+
+
+</beans>
